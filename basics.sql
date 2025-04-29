@@ -8,7 +8,7 @@ SELECT a, b
 FROM t;
 
 
--- ALIAS
+-- aliasing
 SELECT a AS alias_a
 FROM t;
 
@@ -22,6 +22,9 @@ FROM t;
 CREATE VIEW my_view AS
 SELECT a, b, c
 FROM t;
+
+SELECT *
+FROM my_view;
 
 
 -- LIMIT
@@ -72,8 +75,8 @@ SELECT
 FROM t;
 
 
--- ops between cols
-SELECT (a - b) AS a_minus_b
+-- operations between fields
+SELECT (a + b) AS a_plus_b
 FROM t;
 
 
