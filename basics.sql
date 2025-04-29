@@ -34,7 +34,10 @@ LIMIT 10;
 
 
 -- COUNT
-SELECT COUNT(a) AS cnt_a
+SELECT COUNT(a) AS cnt_a  -- count non-null values
+FROM t;
+
+SELECT COUNT(DISTINCT a) AS cnt_uniq_a  -- count unique non-null values
 FROM t;
 
 
@@ -85,8 +88,16 @@ SELECT *
 FROM t
 ORDER BY a ASC, b DESC;
 
+SELECT a, b
+FROM t
+ORDER BY c;  -- can be done but not good practice
+
 
 -- GROUP BY
+SELECT a, COUNT(b) AS cnt_b
+FROM t
+GROUP BY a;
+
 SELECT a, b, SUM(c) AS total_c
 FROM t
 GROUP BY a, b
@@ -94,6 +105,13 @@ ORDER BY total_c DESC;
 
 
 -- HAVING (filtering after aggregation)
+SELECT a, COUNT(b) AS cnt_b
+FROM t
+GROUP BY a
+HAVING COUNT(b) > 10;
+
+
+-- all 7 keywords (SELECT, FROM, WHERE, ORDER BY, HAVING, GROUP BY, LIMIT) in one query
 SELECT a, b, SUM(c) AS total_c
 FROM t
 WHERE a > 0 AND b > 0
@@ -103,8 +121,8 @@ ORDER BY total_c DESC
 LIMIT 5;
 
 
--- Keywords order of writing
+-- keywords order of writing
 -- SELECT -> FROM -> WHERE -> ORDER BY -> HAVING -> GROUP BY -> LIMIT
 
--- Keywords order of execusion
+-- keywords order of execusion
 -- FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY -> LIMIT
