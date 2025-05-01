@@ -34,7 +34,7 @@ LIMIT 10;
 
 
 -- COUNT
-SELECT COUNT(a) AS cnt_a  -- count non-null values
+SELECT COUNT(*) AS cnt  -- count all rows including nulls
 FROM t;
 
 SELECT COUNT(DISTINCT a) AS cnt_uniq_a  -- count unique non-null values
