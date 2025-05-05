@@ -37,7 +37,10 @@ LIMIT 10;
 SELECT COUNT(*) AS cnt  -- count all rows including nulls
 FROM t;
 
-SELECT COUNT(DISTINCT a) AS cnt_uniq_a  -- count unique non-null values
+SELECT COUNT(a) AS cnt_a  -- count all rows where "a" is not null
+FROM t;
+
+SELECT COUNT(DISTINCT a) AS cnt_uniq_a  -- count unique non-null values of "a"
 FROM t;
 
 
@@ -111,7 +114,8 @@ GROUP BY a
 HAVING COUNT(b) > 10;
 
 
--- all 7 keywords (SELECT, FROM, WHERE, ORDER BY, HAVING, GROUP BY, LIMIT) in one query
+/* all 7 keywords (SELECT, FROM, WHERE, ORDER BY, HAVING, GROUP BY, LIMIT) in
+one query */
 SELECT a, b, SUM(c) AS total_c
 FROM t
 WHERE a > 0 AND b > 0
